@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UptimeMonitor | Monitor Your Services</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>UptimeMonitor</h1>
+        <div class="nav-links">
+            {% if user.is_authenticated %}
+                <span>Welcome, <strong>{{ user.username }}</strong></span>
+                <a href="/logout" class="btn-secondary">Logout</a>
+            {% else %}
+                <a href="/login" class="btn-primary">Login / Sign Up</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main class="container">
+            <section class="hero">
+                <h1>Reliable Uptime Monitoring.</h1>
+                <p>Get notified before your users do. Monitor URLs, APIs, and stay informed with real-time latency tracking.</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>HTTP Monitoring</h3>
+                        <p>Check the status of any website or REST API every minute.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Latency Tracking</h3>
+                        <p>Visualize response times to identify performance bottlenecks.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Instant Alerts</h3>
+                        <p>Receive notifications immediately when a service goes down.</p>
+                    </div>
+                </div>
+                {% if user.is_authenticated %}
+                <center><a href="/dashboard" class="btn-primary btn-large">Dashboard</a></center>
+                {% else %}
+                <center><a href="/login" class="btn-primary btn-large">Get Started for Free</a></center>
+                {% endif %}
+            </section>
+    </main>
+
+    <footer class="footer">
+        <p>Developed by <a href="https://github.com/manjinder-27" target="_blank">@manjinder-27</a></p>
+    </footer>
+</body>
+</html>

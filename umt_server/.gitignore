@@ -1,0 +1,10 @@
+.vscode
+api/__pycache__/
+api/migrations/
+renderer/__pycache__/
+renderer/migrations/
+umt_server/__pycache__/
+static/rest_framework/
+venv/
+db.sqlite3
+celerybeat-schedule

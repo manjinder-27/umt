@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Monitor | UptimeMonitor</title>
+    <link rel="stylesheet" href="{% static 'css/add_monitor.css' %}"/>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>UptimeMonitor</h1>
+        <div class="nav-links">
+            <a href="/dashboard" class="btn-secondary">Dashboard</a>
+            <a href="/logout" class="btn-secondary">Logout</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="form-container-small">
+            <div class="header-action">
+                <h2>Add New Service Monitor</h2>
+                <p>We'll check the status and latency of this URL at the interval you specify.</p>
+            </div>
+
+            <form method="POST" action="{% url 'add-monitor' %}" class="card">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="name">Friendly Name</label>
+                    <input type="text" name="name" id="name" placeholder="e.g. My Portfolio API" required>
+                    <small>A nickname to help you identify the service.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="url">Target URL</label>
+                    <input type="url" name="url" id="url" placeholder="https://example.com" required>
+                    <small>Must include http:// or https://</small>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="interval">Check Interval</label>
+                        <select name="interval" id="interval">
+                            <option value="1">Every 1 Minute</option>
+                            <option value="5">Every 5 Minutes</option>
+                            <option value="15">Every 15 Minutes</option>
+                            <option value="60">Every 1 Hour</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="expected_status">Expected Status</label>
+                        <input type="number" name="expected_status" id="expected_status" value="200">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Create Monitor</button>
+                    <a href="/dashboard" class="btn-cancel">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Developed by <a href="https://github.com/manjinder-27" target="_blank">@manjinder-27</a></p>
+    </footer>
+</body>
+</html>

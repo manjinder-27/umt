@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | UptimeMonitor</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-card signup-card">
+            <h2>Join UptimeMonitor</h2>
+            <p>Start monitoring your services for free</p>
+
+            <form method="POST" action="{% url 'signup_page' %}">
+                {% csrf_token %}
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input type="text" name="first_name" id="first_name" placeholder="John" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" name="last_name" id="last_name" placeholder="Doe" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" id="email" placeholder="john@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="johndoe123" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm</label>
+                        <input type="password" name="confirm_password" id="confirm_password" placeholder="••••••••" required>
+                    </div>
+                </div>
+                <p style="color: red;">{{ error_msg }}</p>
+
+                <button type="submit" class="btn-primary btn-full">Create Account</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="/login">Login</a></p>
+                <a href="/" class="back-link">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Developed by <a href="https://github.com/manjinder-27" target="_blank">@manjinder-27</a></p>
+    </footer>
+</body>
+</html>

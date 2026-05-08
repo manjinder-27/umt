@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UptimeMonitor | Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>UptimeMonitor</h1>
+        <div class="user-info">Welcome, {{ user.username }}</div>
+    </nav>
+
+    <main class="container">
+        <!-- Summary Cards -->
+        <section class="stats-grid">
+            <div class="card">
+                <h3>Total Services</h3>
+                <p id="total-count">0</p>
+            </div>
+            <div class="card status-up">
+                <h3>Systems Up</h3>
+                <p id="up-count">0</p>
+            </div>
+            <div class="card status-down">
+                <h3>Systems Down</h3>
+                <p id="down-count">0</p>
+            </div>
+        </section>
+
+        <!-- Action Section -->
+        <section class="action-bar">
+            <h2>Your Monitors</h2>
+            <button id="add-btn" class="btn-primary" onclick="location.href='/add-monitor'">+ Add New Monitor</button>
+        </section>
+
+        <!-- Monitors Table -->
+        <section class="monitor-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service Name</th>
+                        <th>URL</th>
+                        <th>Status</th>
+                        <th>Latency</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="monitor-tbody">
+                    <!-- Data will be injected here using JavaScript -->
+                    <tr>
+                        <td colspan="6" style="text-align:center;">Loading your monitors...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="{% static 'js/dashboard.js' %}"></script>
+</body>
+</html>

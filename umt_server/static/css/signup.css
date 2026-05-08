@@ -1,0 +1,21 @@
+/* Multi-column form layout */
+.signup-card {
+    max-width: 500px; /* Slightly wider for the double columns */
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* Mobile Responsive: stack name/password fields on small screens */
+@media (max-width: 480px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
